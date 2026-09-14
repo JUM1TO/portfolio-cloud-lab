@@ -1,40 +1,440 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Portafolio v1.0</title>
+
+    <meta
+        name="description"
+        content="Juan Carlos Ramirez — Site Reliability, Cloud and DevOps Engineer working with AWS, Terraform, automation and Linux."
+    >
+
+    <title>Juan Carlos Ramirez | Cloud & DevOps Engineer</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <header class="navbar">
+        <a class="logo" href="#home">JCR.</a>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#lab">Cloud Lab</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+
     <main>
-        <section>
-            <h1>Hola, mi nombre es Juan Carlos — Cloud & DevOps Engineer</h1>
 
-            <p>
-                Mi experiencia se basa en el manejo de infraestructura en la nube,
-                especialmente AWS, automatización y creación de infraestructura.
-            </p>
+        <!-- HERO -->
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+                <p class="eyebrow">SITE RELIABILITY · CLOUD · DEVOPS</p>
+
+                <h1>
+                    I build and automate
+                    <span>cloud infrastructure.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Mechatronics Engineer working with AWS infrastructure,
+                    automation, Infrastructure as Code and Linux across
+                    enterprise cloud environments.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button primary" href="#work">View my work</a>
+
+                    <a
+                        class="button secondary"
+                        href="https://github.com/JUM1TO"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="terminal-body">
+                    <p><span class="prompt">$</span> whoami</p>
+                    <p class="terminal-output">juan-carlos</p>
+
+                    <p><span class="prompt">$</span> role</p>
+                    <p class="terminal-output">site-reliability-engineer</p>
+
+                    <p><span class="prompt">$</span> stack --current</p>
+                    <p class="terminal-output">
+                        aws terraform linux python automation
+                    </p>
+
+                    <p><span class="prompt">$</span> deployment status</p>
+                    <p class="success">✓ healthy</p>
+                </div>
+            </div>
+
         </section>
 
-        <section>
-            <h2>Sobre este proyecto</h2>
 
-            <p>
-                Este sitio es un pequeño laboratorio personal que estoy desarrollando
-                para practicar y demostrar mis habilidades en Cloud y DevOps.
-            </p>
+        <!-- ABOUT -->
+        <section class="section" id="about">
+
+            <p class="section-label">01 / ABOUT</p>
+
+            <div class="section-grid">
+                <h2>
+                    Engineering systems that are
+                    repeatable, reliable and automated.
+                </h2>
+
+                <div class="section-copy">
+                    <p>
+                        My work focuses on cloud infrastructure and automation,
+                        supporting AWS environments and building repeatable
+                        deployment and configuration workflows.
+                    </p>
+
+                    <p>
+                        I work across infrastructure, Linux systems and
+                        automation tooling, with a growing focus on Site
+                        Reliability Engineering and modern cloud architecture.
+                    </p>
+                </div>
+            </div>
+
         </section>
 
-        <section>
-            <h2>CV</h2>
+
+        <!-- TECHNOLOGIES -->
+        <section class="section technologies">
+
+            <p class="section-label">CORE TECHNOLOGIES</p>
+
+            <div class="tech-grid">
+                <span>AWS</span>
+                <span>Terraform</span>
+                <span>Linux</span>
+                <span>Python</span>
+                <span>Systems Manager</span>
+                <span>Ansible</span>
+                <span>GitHub Actions</span>
+                <span>CI/CD</span>
+            </div>
+
+        </section>
+
+
+        <!-- WORK -->
+        <section class="section" id="work">
+
+            <p class="section-label">02 / SELECTED WORK</p>
+
+            <div class="section-heading">
+                <h2>Projects & Engineering Work</h2>
+
+                <p>
+                    Infrastructure, automation and software projects built
+                    around real operational problems.
+                </p>
+            </div>
+
+
+            <div class="projects">
+
+                <article class="project-card featured">
+
+                    <div class="project-number">01</div>
+
+                    <div class="project-content">
+                        <p class="project-type">ENTERPRISE AUTOMATION</p>
+
+                        <h3>AWS Infrastructure Automation</h3>
+
+                        <p>
+                            Automated installation and configuration workflows
+                            for infrastructure agents running across Linux EC2
+                            environments using Terraform, AWS Systems Manager
+                            and Ansible.
+                        </p>
+
+                        <div class="tags">
+                            <span>AWS</span>
+                            <span>Terraform</span>
+                            <span>SSM</span>
+                            <span>Ansible</span>
+                            <span>Linux</span>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <div class="project-number">02</div>
+
+                    <div class="project-content">
+                        <p class="project-type">CLOUD PLATFORM</p>
+
+                        <h3>FILPRO</h3>
+
+                        <p>
+                            Python-based platform for processing invoices and
+                            warehouse documents, evolved into an AWS-hosted
+                            application with automated email ingestion,
+                            inventory operations and REST APIs.
+                        </p>
+
+                        <div class="tags">
+                            <span>Python</span>
+                            <span>FastAPI</span>
+                            <span>EC2</span>
+                            <span>RDS</span>
+                            <span>S3</span>
+                            <span>SES</span>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <div class="project-number">03</div>
+
+                    <div class="project-content">
+                        <p class="project-type">DEVOPS LAB</p>
+
+                        <h3>Portfolio Cloud Lab</h3>
+
+                        <p>
+                            The website you're viewing is also an engineering
+                            project: hosted on AWS and automatically deployed
+                            from GitHub using federated authentication and
+                            Systems Manager.
+                        </p>
+
+                        <div class="tags">
+                            <span>AWS</span>
+                            <span>GitHub Actions</span>
+                            <span>OIDC</span>
+                            <span>IAM</span>
+                            <span>SSM</span>
+                            <span>NGINX</span>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- CLOUD LAB -->
+        <section class="section" id="lab">
+
+            <p class="section-label">03 / CLOUD LAB</p>
+
+            <div class="lab">
+
+                <div class="lab-description">
+                    <h2>This website is part of the lab.</h2>
+
+                    <p>
+                        Instead of treating this portfolio as only a static
+                        website, I'm using it as an evolving environment for
+                        cloud infrastructure, deployment automation,
+                        containers and reliability engineering.
+                    </p>
+                </div>
+
+
+                <div class="pipeline">
+
+                    <div class="pipeline-item">
+                        <span>01</span>
+                        <strong>Git Push</strong>
+                        <small>Source change</small>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-item">
+                        <span>02</span>
+                        <strong>GitHub Actions</strong>
+                        <small>CI/CD pipeline</small>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-item">
+                        <span>03</span>
+                        <strong>OIDC + IAM</strong>
+                        <small>Federated authentication</small>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-item">
+                        <span>04</span>
+                        <strong>AWS Systems Manager</strong>
+                        <small>Remote deployment</small>
+                    </div>
+
+                    <div class="pipeline-arrow">↓</div>
+
+                    <div class="pipeline-item">
+                        <span>05</span>
+                        <strong>EC2 + NGINX</strong>
+                        <small>Production host</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="roadmap">
+
+                <div class="roadmap-item complete">
+                    <span>✓</span>
+                    <div>
+                        <strong>CI/CD Pipeline</strong>
+                        <small>GitHub Actions + AWS</small>
+                    </div>
+                </div>
+
+                <div class="roadmap-item complete">
+                    <span>✓</span>
+                    <div>
+                        <strong>Federated Authentication</strong>
+                        <small>GitHub OIDC + IAM</small>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <span>○</span>
+                    <div>
+                        <strong>Infrastructure as Code</strong>
+                        <small>Terraform</small>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <span>○</span>
+                    <div>
+                        <strong>Containerization</strong>
+                        <small>Docker</small>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <span>○</span>
+                    <div>
+                        <strong>Orchestration</strong>
+                        <small>Kubernetes + Helm</small>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <span>○</span>
+                    <div>
+                        <strong>Observability</strong>
+                        <small>Metrics, logs & health</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXPERIENCE -->
+        <section class="section">
+
+            <p class="section-label">04 / EXPERIENCE</p>
+
+            <div class="experience-row">
+                <div>
+                    <span>2025 — PRESENT</span>
+                </div>
+
+                <div>
+                    <h3>Site Reliability Engineer</h3>
+                    <p>Tata Consultancy Services</p>
+                </div>
+
+                <div>
+                    <p>
+                        AWS infrastructure, automation, Terraform, Linux,
+                        Systems Manager, Ansible and enterprise operational
+                        reliability.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+        <section class="contact section" id="contact">
+
+            <p class="section-label">05 / CONTACT</p>
+
+            <h2>Let's build reliable systems.</h2>
 
             <p>
-                Puedes consultar mi CV aquí:
-                <a href="URL-DE-TU-CV" target="_blank">Ver CV</a>
+                Interested in Cloud Engineering, DevOps and
+                Site Reliability Engineering opportunities.
             </p>
+
+            <div class="contact-links">
+                <a href="mailto:juancarlos737@outlook.com">
+                    Email
+                </a>
+
+                <a
+                    href="https://github.com/JUM1TO"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/juan-carlos-ramirez-espinosa-70435b279"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
+            </div>
+
         </section>
+
     </main>
+
+
+    <footer>
+        <p>Juan Carlos Ramirez Espinosa</p>
+        <p>Built & deployed on AWS.</p>
+    </footer>
+
+    <script src="main.js"></script>
+
 </body>
 </html>

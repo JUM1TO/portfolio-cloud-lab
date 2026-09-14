@@ -1,46 +1,566 @@
+:root {
+    --bg: #090d12;
+    --surface: #10161e;
+    --surface-light: #151d27;
+    --border: #26303d;
+
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --accent: #4ade80;
+    --accent-soft: rgba(74, 222, 128, 0.08);
+
+    --max-width: 1180px;
+}
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #111827;
-    color: #f3f4f6;
+    background: var(--bg);
+    color: var(--text);
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
     line-height: 1.6;
 }
 
-main {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 60px 20px;
-}
-
-section {
-    margin-bottom: 50px;
-}
-
-h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-h2 {
-    color: #60a5fa;
-    margin-bottom: 15px;
-}
-
-p {
-    color: #d1d5db;
-    max-width: 750px;
-}
-
 a {
-    color: #60a5fa;
+    color: inherit;
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
+
+/* NAVIGATION */
+
+.navbar {
+    width: min(92%, var(--max-width));
+    height: 80px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--muted);
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--text);
+}
+
+
+/* MAIN */
+
+main {
+    width: min(92%, var(--max-width));
+    margin: auto;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: calc(100vh - 80px);
+
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    align-items: center;
+    gap: 5rem;
+
+    padding: 7rem 0;
+}
+
+.eyebrow,
+.section-label,
+.project-type {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.hero h1 {
+    max-width: 800px;
+
+    margin: 1.25rem 0;
+
+    font-size: clamp(3.2rem, 7vw, 6.3rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+}
+
+.hero h1 span {
+    color: var(--muted);
+}
+
+.hero-description {
+    max-width: 650px;
+
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+
+    margin-top: 2rem;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 0.8rem 1.25rem;
+
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button.primary {
+    background: var(--text);
+    color: var(--bg);
+}
+
+.button.secondary:hover {
+    background: var(--surface);
+}
+
+
+/* TERMINAL */
+
+.terminal {
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: var(--surface);
+
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-header {
+    display: flex;
+    gap: 7px;
+
+    padding: 14px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.terminal-header span {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #475569;
+}
+
+.terminal-body {
+    padding: 1.5rem;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+    font-size: 0.82rem;
+}
+
+.terminal-body p {
+    margin-bottom: 0.55rem;
+}
+
+.prompt,
+.success {
+    color: var(--accent);
+}
+
+.terminal-output {
+    margin-bottom: 1.3rem !important;
+    color: var(--muted);
+}
+
+
+/* SECTIONS */
+
+.section {
+    padding: 8rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.section-label {
+    margin-bottom: 3rem;
+}
+
+.section-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+}
+
+.section h2 {
+    max-width: 700px;
+
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+}
+
+.section-copy {
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
+.section-copy p + p {
+    margin-top: 1.5rem;
+}
+
+
+/* TECHNOLOGIES */
+
+.technologies {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+}
+
+.tech-grid span {
+    padding: 1.5rem;
+
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    color: var(--muted);
+    font-family: monospace;
+}
+
+
+/* PROJECTS */
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 3rem;
+
+    margin-bottom: 4rem;
+}
+
+.section-heading p {
+    max-width: 420px;
+    color: var(--muted);
+}
+
+.projects {
+    border-top: 1px solid var(--border);
+}
+
+.project-card {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+
+    padding: 3rem 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.project-number {
+    color: var(--muted);
+    font-family: monospace;
+}
+
+.project-content {
+    max-width: 850px;
+}
+
+.project-content h3 {
+    margin: 0.7rem 0 1rem;
+
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+}
+
+.project-content > p:not(.project-type) {
+    max-width: 700px;
+    color: var(--muted);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    margin-top: 1.5rem;
+}
+
+.tags span {
+    padding: 0.35rem 0.7rem;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+
+/* LAB */
+
+.lab {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 6rem;
+}
+
+.lab-description p {
+    max-width: 500px;
+
+    margin-top: 1.5rem;
+
+    color: var(--muted);
+}
+
+.pipeline {
+    padding: 2rem;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: var(--surface);
+}
+
+.pipeline-item {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+}
+
+.pipeline-item span {
+    grid-row: span 2;
+
+    color: var(--accent);
+    font-family: monospace;
+}
+
+.pipeline-item small {
+    color: var(--muted);
+}
+
+.pipeline-arrow {
+    margin: 0.6rem 0 0.6rem 20px;
+    color: var(--muted);
+}
+
+.roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    margin-top: 5rem;
+}
+
+.roadmap-item {
+    display: flex;
+    gap: 1rem;
+
+    padding: 1.3rem;
+
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    background: var(--surface);
+}
+
+.roadmap-item > span {
+    color: var(--muted);
+}
+
+.roadmap-item.complete > span {
+    color: var(--accent);
+}
+
+.roadmap-item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.roadmap-item small {
+    color: var(--muted);
+}
+
+
+/* EXPERIENCE */
+
+.experience-row {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1.5fr;
+    gap: 3rem;
+
+    padding: 2rem 0;
+
+    border-top: 1px solid var(--border);
+}
+
+.experience-row span,
+.experience-row p {
+    color: var(--muted);
+}
+
+
+/* CONTACT */
+
+.contact h2 {
+    max-width: 900px;
+
+    font-size: clamp(3rem, 7vw, 6rem);
+}
+
+.contact > p:not(.section-label) {
+    margin-top: 1.5rem;
+    color: var(--muted);
+}
+
+.contact-links {
+    display: flex;
+    gap: 2rem;
+
+    margin-top: 3rem;
+}
+
+.contact-links a {
+    border-bottom: 1px solid var(--muted);
+}
+
+
+/* FOOTER */
+
+footer {
+    width: min(92%, var(--max-width));
+
+    margin: auto;
+    padding: 2rem 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+
+        padding: 5rem 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 15vw, 5rem);
+    }
+
+    .section {
+        padding: 5rem 0;
+    }
+
+    .section-grid,
+    .lab {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .section-heading {
+        display: block;
+    }
+
+    .section-heading p {
+        margin-top: 1.5rem;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card {
+        grid-template-columns: 50px 1fr;
+    }
+
+    .roadmap {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    footer {
+        display: block;
+    }
+
+    footer p + p {
+        margin-top: 0.5rem;
+    }
 }

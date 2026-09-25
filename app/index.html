@@ -17,7 +17,7 @@
 <body>
 
     <header class="navbar">
-        <a class="logo" href="#home">JCR.</a>
+        <a class="logo" href="#home">JUMITO_</a>
 
         <nav>
             <a href="#about">About</a>
@@ -49,6 +49,15 @@
 
                 <div class="hero-actions">
                     <a class="button primary" href="#work">View my work</a>
+
+                    <a
+                        class="button secondary"
+                        href="resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Resume
+                    </a>
 
                     <a
                         class="button secondary"
@@ -221,19 +230,22 @@
                         <h3>Portfolio Cloud Lab</h3>
 
                         <p>
-                            The website you're viewing is also an engineering
-                            project: hosted on AWS and automatically deployed
-                            from GitHub using federated authentication and
-                            Systems Manager.
+                            This website is also an engineering project: its AWS infrastructure
+                            is provisioned with Terraform and deployments are automated through
+                            GitHub Actions using OIDC and AWS Systems Manager. DNS is managed
+                            with Route 53 and the site is served securely over HTTPS.
                         </p>
 
                         <div class="tags">
                             <span>AWS</span>
+                            <span>Terraform</span>
                             <span>GitHub Actions</span>
                             <span>OIDC</span>
                             <span>IAM</span>
                             <span>SSM</span>
+                            <span>Route 53</span>
                             <span>NGINX</span>
+                            <span>TLS</span>
                         </div>
                     </div>
 
@@ -327,7 +339,7 @@
                 </div>
 
                 <div class="roadmap-item">
-                    <span>○</span>
+                    <span>✓</span>
                     <div>
                         <strong>Infrastructure as Code</strong>
                         <small>Terraform</small>
@@ -431,7 +443,7 @@
 
     <footer>
         <p>Juan Carlos Ramirez Espinosa</p>
-        <p>Built & deployed on AWS.</p>
+        <p>jumito.dev · Built & deployed on AWS.</p>
     </footer>
 
     <script src="main.js"></script>

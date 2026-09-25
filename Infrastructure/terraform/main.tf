@@ -62,6 +62,14 @@ resource "aws_security_group" "web" {
   vpc_id      = aws_vpc.portfolio.id
 
   ingress {
+    description = "HTTPS from the internet"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     description = "HTTP from the internet"
     from_port   = 80
     to_port     = 80
@@ -212,4 +220,40 @@ resource "aws_iam_policy" "github_deploy" {
 resource "aws_iam_role_policy_attachment" "github_deploy" {
   role       = aws_iam_role.github_deploy.name
   policy_arn = aws_iam_policy.github_deploy.arn
+}
+
+data "aws_route53_zone" "jumito" {
+  name         = "jumito.dev."
+  private_zone = false
+}
+
+resource "aws_eip" "web" {
+  instance = aws_instance.web.id
+  domain   = "vpc"
+
+  tags = {
+    Name = "portfolio-web-eip-tf"
+  }
+
+  depends_on = [
+    aws_internet_gateway.portfolio
+  ]
+}
+
+resource "aws_route53_record" "root" {
+  zone_id = data.aws_route53_zone.jumito.zone_id
+  name    = "jumito.dev"
+  type    = "A"
+  ttl     = 300
+
+  records = [aws_eip.web.public_ip]
+}
+
+resource "aws_route53_record" "www" {
+  zone_id = data.aws_route53_zone.jumito.zone_id
+  name    = "www.jumito.dev"
+  type    = "A"
+  ttl     = 300
+
+  records = [aws_eip.web.public_ip]
 }

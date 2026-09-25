@@ -1,0 +1,27 @@
+#!/bin/bash
+set -euxo pipefail
+
+dnf update -y
+dnf install -y nginx git rsync
+
+systemctl enable --now nginx
+systemctl enable --now amazon-ssm-agent || true
+
+mkdir -p /opt/portfolio
+cd /opt/portfolio
+
+if [ ! -d portfolio-cloud-lab/.git ]; then
+  git clone "${github_repo_url}" portfolio-cloud-lab
+fi
+
+cd /opt/portfolio/portfolio-cloud-lab
+git fetch origin
+git checkout main
+git reset --hard origin/main
+
+rsync -av --delete app/ /usr/share/nginx/html/
+
+nginx -t
+systemctl restart nginx
+
+curl -f http://localhost >/dev/null

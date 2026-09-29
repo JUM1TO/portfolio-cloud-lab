@@ -2,9 +2,10 @@
 set -euxo pipefail
 
 dnf update -y
-dnf install -y nginx git rsync
+dnf install -y nginx git rsync docker
 
 systemctl enable --now nginx
+systemctl enable --now docker
 systemctl enable --now amazon-ssm-agent || true
 
 mkdir -p /opt/portfolio

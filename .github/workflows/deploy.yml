@@ -17,22 +17,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Inspect GitHub OIDC claims
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const token = await core.getIDToken('sts.amazonaws.com')
-            const payload = JSON.parse(
-              Buffer.from(token.split('.')[1], 'base64').toString()
-            )
-
-            console.log("aud:", payload.aud)
-            console.log("sub:", payload.sub)
-            console.log("repository:", payload.repository)
-            console.log("repository_id:", payload.repository_id)
-            console.log("repository_owner:", payload.repository_owner)
-            console.log("repository_owner_id:", payload.repository_owner_id)
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v5
         with:
@@ -47,21 +31,28 @@ jobs:
             --parameters 'commands=[
               "set -e",
               "cd /opt/portfolio/portfolio-cloud-lab",
-              "git pull origin main",
-              "rsync -av --delete app/ /usr/share/nginx/html/",
-              "curl -f http://localhost > /dev/null"
+              "git fetch origin main",
+              "git reset --hard origin/main",
+              "chmod +x scripts/deploy.sh",
+              "sudo scripts/deploy.sh"
             ]' \
             --query "Command.CommandId" \
             --output text)
 
           echo "SSM Command ID: $COMMAND_ID"
 
+          set +e
+
           aws ssm wait command-executed \
             --command-id "$COMMAND_ID" \
             --instance-id "i-0c263c599ad6e0058"
+
+          WAIT_EXIT=$?
+
+          set -e
 
           aws ssm get-command-invocation \
             --command-id "$COMMAND_ID" \
             --instance-id "i-0c263c599ad6e0058"
 
-            
+          exit $WAIT_EXIT

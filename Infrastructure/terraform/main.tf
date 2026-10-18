@@ -154,6 +154,13 @@ resource "aws_instance" "web" {
     aws_route_table_association.public_a,
     aws_iam_role_policy_attachment.ec2_ssm_core
   ]
+
+  lifecycle {
+    ignore_changes = [
+      ami,
+      user_data
+    ]
+  }
 }
 
 data "aws_iam_policy_document" "github_assume_role" {

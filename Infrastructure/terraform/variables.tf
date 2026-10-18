@@ -19,7 +19,7 @@ variable "public_subnet_cidr" {
 variable "instance_type" {
   description = "EC2 instance type. t4g.micro uses ARM64."
   type        = string
-  default     = "t4g.micro"
+  default     = "t4g.small"
 }
 
 variable "github_repo_url" {

@@ -10,9 +10,9 @@ It intentionally does **not** import, reference, modify, or destroy the existing
 - Public subnet: `10.30.1.0/24`
 - Internet Gateway
 - Public route table
-- Security Group with HTTP/80 only (no SSH)
+- Security Group with HTTP/80 and HTTPS/443 only (no SSH)
 - IAM role + instance profile for AWS Systems Manager
-- Amazon Linux 2023 ARM64 EC2 (`t4g.micro`)
+- Amazon Linux 2023 ARM64 EC2 (`t4g.small`)
 - NGINX + Git + rsync bootstrap
 - GitHub Actions OIDC deployment IAM role and least-privilege SSM policy
 
@@ -70,3 +70,11 @@ terraform destroy
 ```
 
 `terraform destroy` only targets resources tracked by this Terraform state, but always review the destroy plan first.
+
+## Existing instance lifecycle
+
+The portfolio instance has been resized in place to `t4g.small` (2 GiB). A type change requires a stop/start and therefore a maintenance interruption even when Terraform reports an in-place update.
+
+`aws_instance.web` ignores subsequent changes to `ami` and `user_data`. New AMIs and bootstrap edits must be managed deliberately; these ignored attributes do not continuously configure the existing host.
+
+Production currently runs in Docker behind host NGINX and TLS. The staged K3s configuration, pinned version, and installation checkpoint are documented in [../k3s/README.md](../k3s/README.md). K3s activation and application migration are separate operational steps.
